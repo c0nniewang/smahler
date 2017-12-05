@@ -1,4 +1,4 @@
 class Genre < ApplicationRecord
-  has_many :jam_sessions
-  
+  has_many :jamsessions
+
 end
