@@ -1,4 +1,3 @@
 class Instrument < ApplicationRecord
-  has_many :musicianinstruments
-
+  has_many :musician_instruments
 end
