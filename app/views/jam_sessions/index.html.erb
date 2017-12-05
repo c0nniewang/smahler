@@ -1,0 +1,5 @@
+<ul>
+<% @jamsessions.each do |js| %>
+  <li><%=link_to js.title, jam_session_path(js)%></li>
+  <% end %>
+</ul>
