@@ -1,0 +1,2 @@
+class MusicianJam < ApplicationRecord
+end
