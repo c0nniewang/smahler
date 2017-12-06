@@ -1,3 +1,16 @@
+
+
+<%= form_tag(jam_sessions_path, method: "get") do %>
+  <%= text_field_tag(:search_city, params[:search_city], placeholder: "Search by City:") %>
+  <%= submit_tag("search", name: nil) %>
+  <% end %>
+
+<%= form_tag(jam_sessions_path, method: "get") do %>
+  <%= text_field_tag(:search_genre, params[:search_genre], placeholder: "Search by Genre:") %>
+  <%= submit_tag("search", name: nil) %>
+<% end %>
+
+
 <ul>
 <% @jamsessions.each do |js| %>
   <li><%=link_to js.title, jam_session_path(js)%></li>

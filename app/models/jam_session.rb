@@ -7,6 +7,14 @@ class JamSession < ApplicationRecord
   has_many :instrument_jams
   has_many :instruments, through: :instrument_jams
 
+  def self.search_city(search)
+    JamSession.joins(:city).where('cities.name LIKE ?', "%#{search}%")
+  end
+
+  def self.search_genre(search)
+    JamSession.joins(:genre).where('genres.name LIKE ?', "%#{search}%")
+  end
+
   def city_name=(name)
     self.city = City.find_or_create_by(name: name)
   end

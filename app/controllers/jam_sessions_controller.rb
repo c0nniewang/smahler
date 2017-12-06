@@ -1,6 +1,12 @@
 class JamSessionsController < ApplicationController
   def index
-    @jamsessions = JamSession.all
+    if params[:search_city]
+      @jamsessions = JamSession.search_city(params[:search_city])
+    elsif params[:search_genre]
+      @jamsessions = JamSession.search_genre(params[:search_genre])
+    else
+      @jamsessions = JamSession.all
+    end
   end
 
   def show
