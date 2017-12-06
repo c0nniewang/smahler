@@ -1,15 +1,12 @@
 class UsersController < ApplicationController
-
-  def new
-    @user = User.new
-  end
+  skip_before_action :authorized, only: [:new, :create]
 
   def create
    @user = User.new(user_params)
    if @user.valid?
      @user.save
      session[:user_id] = @user.id
-     redirect_to books_path
+     redirect_to user_path(@user)
    else
      render 'new'
    end
@@ -17,6 +14,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+  end
+
+
+private
+
+  def user_params
+    params.require(:user).permit(:username, :password, :email, :name)
   end
 
 end

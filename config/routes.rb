@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   resources :jam_sessions
   resources :users
-  root 'application#hello'
+  root 'application#homepage', as: 'homepage'
+  get '/sessions', to: 'session#new'
+  post '/sessions', to: 'sessions#create'
+  get '/signout', to: 'sessions#destroy'
 
 end
