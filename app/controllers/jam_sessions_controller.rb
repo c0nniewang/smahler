@@ -13,7 +13,6 @@ class JamSessionsController < ApplicationController
   end
 
   def create
-    byebug
     @jamsession = JamSession.create(jamsession_params)
     @instruments = params[:instruments]
     # CREATE INSTRUMENT JAMS

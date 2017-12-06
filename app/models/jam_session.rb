@@ -4,6 +4,8 @@ class JamSession < ApplicationRecord
   belongs_to :genre
   has_many :musician_jams
   has_many :musicians, through: :musician_jams
+  has_many :instrument_jams
+  has_many :instruments, through: :instrument_jams
 
   def city_name=(name)
     self.city = City.find_or_create_by(name: name)
