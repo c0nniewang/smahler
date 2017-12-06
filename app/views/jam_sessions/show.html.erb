@@ -1,7 +1,8 @@
-
-  <li><%= @jamsession.title%></li>
-  <li><%= @jamsession.description%></li>
-  <li><%= @jamsession.datetime%></li>
-  <li><%= @jamsession.city.name%></li>
-  <li><%= @jamsession.genre.name%></li>
-  <li><%= @jamsession.host.name%></li>
+<div class="profile deep-orange lighten-2 z-depth-1">
+  <h1 class="grey-text text-lighten-5"><%= @jamsession.title%></h1>
+</div>
+<h4 class="teal-text">Date:</h4><%= @jamsession.date%>
+<h4 class="teal-text">City:</h4><%= @jamsession.city.name%>
+<h4 class="teal-text">Description:</h4><%= @jamsession.description%>
+<h4 class="teal-text">Genre:</h4><%= @jamsession.genre.name%>
+<h4 class="teal-text">Host:</h4><%= @jamsession.host.name%>

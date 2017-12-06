@@ -7,21 +7,37 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+    <div>
+      <nav role="navigation" class="card-panel teal lighten-4">
+          <ul>
+            <li>
+              <%= link_to 'Home', jam_sessions_path %>
+            </li>
+            <li>
+              <% if logged_in? %>
+                <%= link_to 'Sign Out', signout_path, method: :delete %>
+              <% else %>
+                <%= link_to 'Sign In', homepage_path %>
+              <% end%>
 
-    <% if logged_in? %>
-    <%= link_to 'Sign Out', signout_path, method: :delete %>
-    <% else %>
-    <%= link_to 'Sign In', homepage_path %>
-    <% end%>
-
-    <% flash.each do |key, value| %>
-    <em><%= value %></em>
-    <% end %>
-
-  <div class="container">
-    <%= yield %>
-  </div>
+              <% flash.each do |key, value| %>
+                <em><%= value %></em>
+              <% end %>
+            </li>
+            <li>
+              <% if logged_in? %>
+                <%= link_to 'Profile', user_path(session[:user_id]) %>
+              <% else %>
+                <%= link_to 'Profile', homepage_path %>
+              <% end%>
+              <% flash.each do |key, value| %>
+                <em><%= value %></em>
+                <% end%>
+            </li>
+          </ul>
+        </nav>
+      <%= yield %>
+    </div>
   </body>
 </html>

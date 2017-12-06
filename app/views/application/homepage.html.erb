@@ -1,29 +1,49 @@
 
-<%= form_tag sessions_path do %>
-  <%= label_tag :username %>
-  <%= text_field_tag :username %>
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
-  <%= submit_tag "Sign in" %>
-<% end %>
 
 
-<%= form_for @user do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %>
+<div class="intro deep-orange lighten-2 z-depth-1">
+  <h1 class="grey-text text-lighten-5">Jam Session</h1>
+    <h5 class="grey lighten-4 grey-text text-darken-1">Find Jams | Make Jams | Be Jams</h5>
+</div>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+<div class="row">
+  <div class= "col 12">
+      <div class= "container" >
+        <div class= "col s6 l0">
+          <%= form_tag sessions_path do %>
+            <%= label_tag :username %>
+            <%= text_field_tag :username %>
+            <%= label_tag :password %>
+            <%= password_field_tag :password %>
+            <a class="waves-effect waves-light btn"><%= submit_tag "Sign in" %></a>
+          <% end %>
+        </div>
+      </div>
 
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
+<!-- <div class="row"> -->
+    <div class="container">
+      <div class= "col s6 m6 l0">
+          <%= form_for @user do |f| %>
+          <%= f.label :username %>
+          <%= f.text_field :username %>
 
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+          <%= f.label :password %>
+          <%= f.password_field :password %>
 
-  <%= f.label :email %>
-  <%= f.text_field :email %>
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation %>
 
-  <%= f.submit %>
+          <%= f.label :name %>
+          <%= f.text_field :name %>
 
-<% end %>
+          <%= f.label :email %>
+          <%= f.text_field :email %>
+
+          <a class="waves-effect waves-light btn"><%= f.submit %></a>
+
+          <% end %>
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
+</div>

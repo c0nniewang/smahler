@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
       session[:user_id] = user.id
       flash[:message] = "Welcome #{user.name}"
-      redirect_to user_path(user)
+      redirect_to jam_sessions_path
     else
       flash[:message] = "Wrong username and password"
       redirect_to homepage_path

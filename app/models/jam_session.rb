@@ -39,5 +39,10 @@ class JamSession < ApplicationRecord
     end
   end
 
+  def date
+    d = self.datetime
+    d.strftime("%m/%d/%Y")
+  end
+
 
 end
