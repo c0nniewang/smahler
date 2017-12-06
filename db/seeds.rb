@@ -35,3 +35,23 @@ instrument5 = Instrument.create(name: "Percussion")
 # JAM SESSIONS
 jamsession1 = JamSession.create(title: "Wine & Whines", datetime: Date.parse("2017-8-28"), description: "so much wine", city_id: 1, genre_id: 2, host_id: 1)
 jamsession2 = JamSession.create(title: "Booze & Blues", datetime: Date.parse("2017-10-28"), description: "self pity with a side of sanca", city_id: 1, genre_id: 1, host_id: 2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
