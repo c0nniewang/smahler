@@ -1,13 +1,19 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  before_action :authorized
 
-  helper_method :logged_in
+  before_action :authorized
+  skip_before_action :authorized, only: [:homepage]
+
+  helper_method :logged_in?
 
 
   def homepage
-    @user = User.new
+    if logged_in?
+      redirect_to user_path(session[:user_id])
+    else
+      @user = User.new
+    end
   end
 
   def current_user

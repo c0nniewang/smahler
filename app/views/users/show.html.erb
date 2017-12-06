@@ -1,1 +1,43 @@
-<%= @user.name %>
+<h1>Hi <%= @user.name %>!</h1>
+
+
+<h2>Upcoming Jam Sessions You're Playing In:</h2>
+<% if @user.is_playing_jam_session != [] %>
+<ul>
+  <% @user.is_playing_jam_session.each do |js| %>
+    <ul>
+      <li><%= js.title %> </li>
+      <li><%= js.datetime %> </li>
+      <li><%= js.description %> </li>
+      <li><%= js.city.name %> </li>
+      <li><%= js.host.name %> </li>
+      <li><%= js.genre.name %> </li>
+    </ul>
+  <% end %>
+  </ul>
+  <% else %>
+  <%= "You are not playing in any upcoming jams." %><br />
+  <%= link_to 'Join Jam Session!', jam_sessions_path %>
+<% end %>
+
+
+<h2>Upcoming Jam Sessions You're Hosting:</h2>
+<% if @user.is_hosting_jam_session != [] %>
+<ul>
+  <% @user.is_hosting_jam_session.each do |js| %>
+    <ul>
+      <li><%= js.title %> </li>
+      <li><%= js.datetime %> </li>
+      <li><%= js.description %> </li>
+      <li><%= js.city.name %> </li>
+      <li><%= js.genre.name %> </li>
+      <% js.musicians.each do |m| %>
+      <li> <%= link_to 'm.name', user_path(m.id) %> </li>
+      <% end %>
+    </ul>
+  <% end %>
+  </ul>
+  <% else %>
+  <%= "You are not hosting any upcoming jams." %><br />
+  <%= link_to 'Create a Jam Session!', new_jam_session_path %>
+<% end %>
