@@ -8,36 +8,38 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <div>
-      <nav role="navigation" class="card-panel teal lighten-4">
-          <ul>
-            <li>
-              <%= link_to 'Home', jam_sessions_path %>
-            </li>
-            <li>
-              <% if logged_in? %>
-                <%= link_to 'Sign Out', signout_path, method: :delete %>
-              <% else %>
-                <%= link_to 'Sign In', homepage_path %>
-              <% end%>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo left">Jams</a>
+        <ul id="nav-mobile" class="right">
+          <li>
+            <%= link_to 'Home', jam_sessions_path %>
+          </li>
+          <li>
+            <% if logged_in? %>
+              <%= link_to 'Sign Out', signout_path, method: :delete %>
+            <% else %>
+              <%= link_to 'Sign In', homepage_path %>
+            <% end%>
 
-              <% flash.each do |key, value| %>
-                <em><%= value %></em>
-              <% end %>
-            </li>
-            <li>
-              <% if logged_in? %>
-                <%= link_to 'Profile', user_path(session[:user_id]) %>
-              <% else %>
-                <%= link_to 'Profile', homepage_path %>
+            <% flash.each do |key, value| %>
+              <em><%= value %></em>
+            <% end %>
+          </li>
+          <li>
+            <% if logged_in? %>
+              <%= link_to 'Profile', user_path(session[:user_id]) %>
+            <% else %>
+              <%= link_to 'Profile', homepage_path %>
+            <% end%>
+            <% flash.each do |key, value| %>
+              <em><%= value %></em>
               <% end%>
-              <% flash.each do |key, value| %>
-                <em><%= value %></em>
-                <% end%>
-            </li>
-          </ul>
-        </nav>
-      <%= yield %>
-    </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <%= yield %>
   </body>
 </html>
