@@ -48,7 +48,7 @@ class JamSessionsController < ApplicationController
       instruments = instrument_ids.map{|id| Instrument.find(id)}
       @jamsession.instruments << instruments
       @jamsession.save
-      
+
       redirect_to jam_session_path(@jamsession)
     else
       render :edit
@@ -69,20 +69,15 @@ class JamSessionsController < ApplicationController
 
   def delete_jams
     @user = User.find(session[:user_id])
-    @js = JamSession.find_by(title: params[:title])
+    @js = JamSession.find_by(id: params[:id])
 
     @instruments = Instrument.all.reject{|i| @user.instruments.include?(i)}
 
     MusicianJam.where(musician_id: @user.id, jam_session_id: @js.id).destroy_all
-    render user_path(@user)
+    redirect_to user_path(@user)
   end
 
-  def delete_inst
-    @user = User.find(session[:user_id])
-    @inst = Instrument.find_by(name: params[:name])
-    @instruments = Instrument.all.reject{|i| @user.instruments.include?(i)}
-    render user_path(@user)
-  end
+
 
   private
 
