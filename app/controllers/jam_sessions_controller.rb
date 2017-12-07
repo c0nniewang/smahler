@@ -40,20 +40,29 @@ class JamSessionsController < ApplicationController
 
   def updatejam
     @jamsession = JamSession.find(params[:id])
+
+    @jamsession.update(jamsession_params)
+
+    if @jamsession.update(jamsession_params)
+      instrument_ids = params[:instrument][:instrument_ids].each{|i| i.to_i}
+      instruments = instrument_ids.map{|id| Instrument.find(id)}
+      @jamsession.instruments << instruments
+      @jamsession.save
+      
+      redirect_to jam_session_path(@jamsession)
+    else
+      render :edit
+    end
+  end
+
+  def updatejam
+    @jamsession = JamSession.find(params[:id])
     @user = User.find(session[:user_id])
 
     if params[:name]
       @instrument = Instrument.find_by(name: params[:name])
       @jamsession.musicians << User.find(session[:user_id])
       render 'show'
-    else
-      @jamsession.update(jamsession_params)
-
-      if @jamsession.valid?
-        redirect_to jam_session_path(@jamsession)
-      else
-        render :edit
-      end
     end
   end
 

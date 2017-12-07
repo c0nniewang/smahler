@@ -38,28 +38,25 @@
     <div class="divider"></div>
     <div class="section">
       <h5 class="teal-text">Description:</h5><%= @jamsession.description%>
+      <h5 class="teal-text">Genre:</h4><%= @jamsession.genre.name%></h5>
 
 <!--added list of instruments, sign up button, and disabled links if instruments have been signed up for -->
       <h5 class="teal-text">Instrumentation:</h5>
-      <% if @instrument %>
-        <% @jamsession.instruments.each do |i| %>
-            <%if @instrument.name == i.name %>
-              <div class="section">
-                <h6 disabled class="left-align"><%= i.name %></h6>
-              </div>
-              <%else %>
-              <div class="section">
-                <h6 disabled class="left-align"><%= i.name %> <span/> </span><%= link_to "Sign Up", "/jam_sessions/#{@jamsession.id}/#{i.name}", method: 'patch' %></h6>
-              </div>
-            <%end %>
-          <br />
-          <% end %>
+        <% if @jamsession.instruments == [] %>
+          <p>There are no listed instruments for this event.</p>
         <% else %>
-          <% @jamsession.instruments.each do |i| %>
-                <div class="section">
-                  <h6 disabled class="left-align"><%= i.name %> <span/> </span><%= link_to "Sign Up", "/jam_sessions/#{@jamsession.id}/#{i.name}", method: 'patch' %></h6>
-                </div>
-              <%end %>
+          <% if MusicianJam.where(musician_id: session[:user_id], jam_session_id: @jamsession.id) != [] %>
+          <ul>
+              <% @jamsession.instruments.each do |i| %>
+              <li><%= i.name %></li>
+              <% end %>
+            </ul>
+              <p>You are already signed up to play for this event!</p>
+          <% else %>
+          `<% @jamsession.instruments.each do |i| %>
+            <h6 disabled class="left-align"><%= i.name %> <span/> </span><%= link_to "Sign Up", "/jam_sessions/#{@jamsession.id}/#{i.name}", method: 'patch' %></h6>
+            <% end %>
+          <% end %>
         <% end %>
 <!--end of instrument list -->
 
@@ -73,8 +70,6 @@
             <% end %>
           </ul>
         <% end %>
-      <h6 class="teal-text">Genre:</h4><%= @jamsession.genre.name%>
-      </h6>
     </div>
   </div>
 
