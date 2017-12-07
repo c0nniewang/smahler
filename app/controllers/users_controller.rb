@@ -27,8 +27,16 @@ class UsersController < ApplicationController
       render user_path(@user)
     else
       @user.instruments << @inst
-      render user_path(@user)
+      render 'show'
     end
+  end
+
+  def delete_inst
+    @user = User.find(session[:user_id])
+    @inst = Instrument.find_by(name: params[:name])
+    @user.instruments.where(id: @inst.id).destroy_all
+    @instruments = Instrument.all.reject{|i| @user.instruments.include?(i)}
+    render 'show'
   end
 
 

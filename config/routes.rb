@@ -8,12 +8,12 @@ Rails.application.routes.draw do
   post '/sessions', to: 'sessions#create'
   delete '/sessions', to: 'sessions#destroy', as: 'signout'
   #added update routes
-  patch '/jam_sessions/:id/:name', to: 'jam_sessions#updatejam', as: 'update_jam_sessions'
+  patch '/users/:name/:id', to: 'users#delete_inst'
+  patch '/users/:name', to: 'users#update_inst'
+
+  patch '/jam_sessions/:id/:name', to: 'jam_sessions#updatejam'
   patch '/jam_sessions', to: 'jam_sessions#update'
-  patch '/jam_sessions/:name', to: 'jam_sessions#update_inst'
-  # patch '/jam_sessions/:title', to: '#jam_sessions#delete_jams', as: 'delete_jams'
-  patch '/jam_sessions/:name', to: 'jam_sessions#delete_inst'
-  patch '/jam_sessions/:id', to: 'jam_sessions#delete_jams', as: 'delete_jams'
+  patch '/jam_sessions/:id', to: 'jam_sessions#delete_jams'
 
 end
 
