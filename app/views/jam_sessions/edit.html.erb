@@ -19,18 +19,21 @@
           <div class="row">
             <div class="input-field col s12">
               <h6 class="grey-text"><b>What is your jam vision?</b></h6>
-              <%= f.text_area :description %><br>
+              <div class="input-field col s12">
+              <%= f.text_area :description %><br></div>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
             <h6 class="grey-text"><b>Choose your city:</b></h6></div>
-            <%= f.collection_radio_buttons :city_id, City.all, :id, :name %><br>
+            <div class="input-field col s12">
+            <%= f.collection_radio_buttons :city_id, City.all, :id, :name %><br></div>
           </div>
           <div class="row">
             <div class="input-field col s12">
               <h6 class="grey-text"><b>Choose your Genre:</b></h6></div>
-              <%= f.collection_radio_buttons :genre_id, Genre.all, :id, :name %><br>
+              <div class="input-field col s12">
+              <%= f.collection_radio_buttons :genre_id, Genre.all, :id, :name %><br></div>
           </div>
           <div class="row">
             <div class="input-field col s12">
