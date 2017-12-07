@@ -19,18 +19,26 @@ class JamSessionsController < ApplicationController
   end
 
   def create
-    @jamsession = JamSession.create(jamsession_params)
-    @instruments = params[:instruments]
-    # CREATE INSTRUMENT JAMS
+    @jamsession = JamSession.new(jamsession_params)
+    @jamsession.host = User.find(session[:user_id])
 
-    redirect_to jam_session_path(@jamsession)
+    if @jamsession.valid?
+      instrument_ids = params[:instrument][:instrument_ids].each{|i| i.to_i}
+      instruments = instrument_ids.map{|id| Instrument.find(id)}
+      @jamsession.instruments << instruments
+      @jamsession.save
+      redirect_to jam_session_path(@jamsession)
+    else
+      render 'new'
+    end
+    # CREATE INSTRUMENT JAMS
   end
 
 
   private
 
   def jamsession_params
-    params.require(:jam_session).permit(:title, :datetime, :description, :city_id, :genre_id, :host_id)
+    params.require(:jam_session).permit(:title, :datetime, :description, :city_id, :genre_id)
   end
 
 end

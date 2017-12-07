@@ -7,6 +7,9 @@ class JamSession < ApplicationRecord
   has_many :instrument_jams
   has_many :instruments, through: :instrument_jams
 
+  validates :title, :datetime, :city, :genre, :description, presence: true
+
+
   def self.search_city(search)
     JamSession.joins(:city).where('cities.name LIKE ?', "%#{search}%")
   end

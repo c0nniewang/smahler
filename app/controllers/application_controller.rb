@@ -27,6 +27,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authorized
+    cookies.signed[:booty] = "butt"
     if logged_in?
     else
       redirect_to homepage_path
