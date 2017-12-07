@@ -1,34 +1,34 @@
-<%= form_for @jamsession do |f| %>
-  <div class="playing_jams deep-orange lighten-2 z-depth-1">
-    <h5 class="grey-text text-lighten-5">Title:</h5>
-  </div>
-  <%= f.text_field :title %><br>
+<div class="container">
+  <div class="row">
+    <div class="col s6">
+      <%= form_for @jamsession do |f| %>
+        <h5 class="grey-text text-lighten-5">Title:</h5>
+        <%= f.text_field :title %><br>
 
-  <div class="playing_jams deep-orange lighten-2 z-depth-1">
-    <h5 class="grey-text text-lighten-5">Write your Jam Vision:</h5>
-  </div>
-  <%= f.text_area :description %><br>
+        <h5 class="grey-text text-lighten-5">Write your Jam Vision:</h5>
+        </div>
+        <%= f.text_area :description %><br>
 
-  <div class="playing_jams deep-orange lighten-2 z-depth-1">
-    <h5 class="grey-text text-lighten-5">Choose Your Event Date:</h5>
-  </div>
-  <%= f.date_field :datetime %><br>
+        <div class="playing_jams deep-orange lighten-2 z-depth-1">
+          <h5 class="grey-text text-lighten-5">Choose Your Event Date:</h5>
+        </div>
+        <%= f.date_field :datetime %><br>
 
-  <div class="playing_jams deep-orange lighten-2 z-depth-1">
-    <h5 class="grey-text text-lighten-5">Choose Your City:</h5>
-  </div>
-  <%= f.collection_radio_buttons :city_id, City.all, :id, :name %><br>
+        <div class="playing_jams deep-orange lighten-2 z-depth-1">
+          <h5 class="grey-text text-lighten-5">Choose Your City:</h5>
+        </div>
+        <%= f.collection_radio_buttons :city_id, City.all, :id, :name %><br>
 
-  <div class="playing_jams deep-orange lighten-2 z-depth-1">
-    <h5 class="grey-text text-lighten-5">Choose Your Genre::</h5>
-  </div>
-  <%= f.collection_radio_buttons :genre_id, Genre.all, :id, :name %><br>
+        <div class="playing_jams deep-orange lighten-2 z-depth-1">
+          <h5 class="grey-text text-lighten-5">Choose Your Genre::</h5>
+        </div>
+        <%= f.collection_radio_buttons :genre_id, Genre.all, :id, :name %><br>
 
-  <div class="playing_jams deep-orange lighten-2 z-depth-1">
-    <h5 class="grey-text text-lighten-5">Pick Your Instrumentation:</h5>
-  </div>
-  <p>
-  </p>
+        <div class="playing_jams deep-orange lighten-2 z-depth-1">
+          <h5 class="grey-text text-lighten-5">Pick Your Instrumentation:</h5>
+        </div>
+        <p>
+        </p>
 
     <select multiple>
 
@@ -38,7 +38,7 @@
     </p>
     <p>
       <input type="checkbox" id="test6" name="instrument[instrument_ids][]" value="2" />
-      <label for="test6">Voilin</label>
+      <label for="test6">Violin</label>
     </p>
     <p>
       <input type="checkbox" id="test13" name="instrument[instrument_ids][]" value="3" />
@@ -65,6 +65,9 @@
       <input type="checkbox" id="test12" name="instrument[instrument_ids][]" value="10" />
       <label for="test12">Trombone</label>
     </p>
+  </select>
+</div>
+</div>
 
 
 
