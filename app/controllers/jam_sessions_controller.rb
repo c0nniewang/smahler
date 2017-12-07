@@ -11,6 +11,7 @@ class JamSessionsController < ApplicationController
 
   def show
     @jamsession = JamSession.find(params[:id])
+    @user = User.find(session[:user_id])
   end
 
   def new

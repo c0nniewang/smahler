@@ -1,12 +1,12 @@
 # USERS
-user1 = User.create(name: "Kat", password: "learnlovecode", is_host: true, is_musician: true)
-user2 = User.create(name: "Connie", password: "wework", is_host: true, is_musician: true)
-user3 = User.create(name: "Ellie", password: "icequeen", is_host: false, is_musician: true)
-user4 = User.create(name: "Erica", password: "stonecold", is_host: false, is_musician: true)
-user5 = User.create(name: "Priyam", password: "learnlovecode", is_host: true, is_musician: false)
-user6 = User.create(name: "Erick", password: "dogs", is_host: true, is_musician: true)
-user7 = User.create(name: "Greg", password: "blahblah", is_host: true, is_musician: true)
-user8 = User.create(name: "Josh", password: "bass", is_host: true, is_musician: true)
+user1 = User.create(username: "KatPap", email: "kat@kat.com",name: "Kat", password: "learnlovecode", is_host: false, is_musician: false)
+user2 = User.create(username: "Concon", email: "hello@connie.com", name: "Connie", password: "wework", is_host: false, is_musician: false)
+user3 = User.create(username: "QueenEllie", email: "ellie@ellie.com", name: "Ellie", password: "icequeen", is_host: false, is_musician: false)
+user4 = User.create(username: "Erica", email: "erica@erica.com", name: "Erica", password: "stonecold", is_host: false, is_musician: false)
+user5 = User.create(username: "Priyam", email: "priyam@priyam.com", name: "Priyam", password: "learnlovecode", is_host: false, is_musician: false)
+user6 = User.create(username: "ErickC", email: "erick@erick.com", name: "Erick", password: "dogs", is_host: false, is_musician: false)
+user7 = User.create(username: "GregZ", email: "Greg@greg.com", name: "Greg", password: "blahblah", is_host: false, is_musician: false)
+user8 = User.create(username: "FirstJosh", email: "josh@josh.com", name: "Josh", password: "bass", is_host: false, is_musician: false)
 
 # CITIES
 city1 = City.create(name:"New York City")
