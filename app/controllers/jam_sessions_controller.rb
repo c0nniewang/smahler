@@ -35,6 +35,25 @@ class JamSessionsController < ApplicationController
     # CREATE INSTRUMENT JAMS
   end
 
+  def edit
+
+  end
+
+
+  def update
+    @jamsession = JamSession.find(params[:id])
+    @user = User.find(session[:user_id])
+
+    if params[:name]
+      @instrument = Instrument.find_by(name: params[:name])
+      @jamsession.musicians << User.find(session[:user_id])
+      render 'show'
+    else
+      @jamsession.update(jamsession_params)
+      render 'show'
+    end
+  end
+
 
   private
 
