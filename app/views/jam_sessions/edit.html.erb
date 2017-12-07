@@ -1,0 +1,81 @@
+<div class="profile deep-orange lighten-2 z-depth-1">
+  <h1 class="grey-text text-lighten-5 center">Edit Your Jam Session</h1>
+</div>
+
+<div class="container">
+  <div class="section">
+    <div class="container">
+      <div class="col s12">
+        <%= form_for @jamsession do |f| %>
+        <div class="row">
+          <div class="input-field col s6">
+            <h6 class="grey-text"><b>Title</b></h6>
+            <%= f.text_field :title %><br>
+          </div>
+          <div class="col s6">
+            <h6 class="grey-text"><b>Event Date:</b></h6>
+            <%= f.date_field :datetime %><br>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <h6 class="grey-text"><b>What is your jam vision?</b></h6>
+              <%= f.text_area :description %><br>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+            <h6 class="grey-text"><b>Choose your city:</b></h6></div>
+            <%= f.collection_radio_buttons :city_id, City.all, :id, :name %><br>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <h6 class="grey-text"><b>Choose your Genre:</b></h6></div>
+              <%= f.collection_radio_buttons :genre_id, Genre.all, :id, :name %><br>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <h6 class="grey-text"><b>What instrumentation do you need?</b></h6>
+            </div>
+          </div>
+
+          <select multiple>
+            <p>
+              <input type="checkbox" id="test5" name="instrument[instrument_ids][]" value="1" />
+              <label for="test5">Voice</label>
+            </p>
+            <p>
+              <input type="checkbox" id="test6" name="instrument[instrument_ids][]" value="2" />
+              <label for="test6">Violin</label>
+            </p>
+            <p>
+              <input type="checkbox" id="test13" name="instrument[instrument_ids][]" value="3" />
+              <label for="test13">Piano</label>
+            </p><p>
+              <input type="checkbox" id="test14" name="instrument[instrument_ids][]" value="4" />
+              <label for="test14">Bass</label>
+            </p><p>
+              <input type="checkbox" id="test7" name="instrument[instrument_ids][]" value="5" />
+              <label for="test7">Auxiliary Percussion</label>
+            </p><p>
+              <input type="checkbox" id="test8" name="instrument[instrument_ids][]" value="6" />
+              <label for="test8">Drums</label>
+            </p><p>
+              <input type="checkbox" id="test9" name="instrument[instrument_ids][]" value="7" />
+              <label for="test9">Guitar</label>
+            </p><p>
+              <input type="checkbox" id="test10" name="instrument[instrument_ids][]" value="8" />
+              <label for="test10">Saxophone</label>
+            </p><p>
+              <input type="checkbox" id="test11" name="instrument[instrument_ids][]" value="9" />
+              <label for="test11">Trumpet</label>
+            </p><p>
+              <input type="checkbox" id="test12" name="instrument[instrument_ids][]" value="10" />
+              <label for="test12">Trombone</label>
+            </p>
+          </select>
+        <a class="waves-effect waves-light btn center"><%= f.submit %></a>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

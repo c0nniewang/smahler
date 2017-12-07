@@ -35,6 +35,21 @@ class JamSessionsController < ApplicationController
     # CREATE INSTRUMENT JAMS
   end
 
+  def edit
+    @jamsession = JamSession.find(params[:id])
+  end
+
+  def update
+    @jamsession = JamSession.find(params[:id])
+
+    if @jamsession.update(jamsession_params)
+      redirect_to jam_session_path(@jamsession)
+    else
+      render :edit
+    end
+  end
+    
+
 
   private
 

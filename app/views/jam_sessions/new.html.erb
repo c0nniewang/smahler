@@ -6,11 +6,11 @@
   <div class="section">
     <div class="container">
       <div class="col s12">
+        <%= form_for @jamsession do |f| %>
         <div class="row">
-          <%= form_for @jamsession do |f| %>
-          <div class="input=field col s6">
+          <div class="input-field col s6">
             <h6 class="grey-text"><b>Title</b></h6>
-            <input placeholder="Title" id="title" type="text" class="validate">
+            <%= f.text_field :title %><br>
           </div>
           <div class="col s6">
             <h6 class="grey-text"><b>Event Date:</b></h6>
@@ -24,15 +24,13 @@
           </div>
           <div class="row">
             <div class="input-field col s12">
-            <h6 class="grey-text"><b>Choose your city:</b></h6>
+            <h6 class="grey-text"><b>Choose your city:</b></h6></div>
             <%= f.collection_radio_buttons :city_id, City.all, :id, :name %><br>
-            </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <h6 class="grey-text"><b>Choose your Genre:</b></h6>
+              <h6 class="grey-text"><b>Choose your Genre:</b></h6></div>
               <%= f.collection_radio_buttons :genre_id, Genre.all, :id, :name %><br>
-            </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
@@ -75,8 +73,8 @@
               <label for="test12">Trombone</label>
             </p>
           </select>
-        </div>
         <a class="waves-effect waves-light btn center"><%= f.submit %></a>
+        </div>
       </div>
     <% end %>
   </div>
