@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   patch '/jam_sessions', to: 'jam_sessions#update'
   patch '/jam_sessions/:name', to: 'jam_sessions#update_inst'
   # patch '/jam_sessions/:title', to: '#jam_sessions#delete_jams', as: 'delete_jams'
-  patch '/jam_sessions/:name', to: 'jam_sessions#delete_inst'
+  patch '/jam_sessions/:name/:id', to: 'jam_sessions#delete_inst'
   patch '/jam_sessions/:id', to: 'jam_sessions#delete_jams', as: 'delete_jams'
 
 end
