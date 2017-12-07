@@ -13,7 +13,22 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find(session[:user_id])
+    inst = Instrument.all + @user.instruments
+    @instruments = inst.uniq
+  end
+
+  def update_inst
+    @user = User.find(session[:user_id])
+    @inst = Instrument.find_by(name: params[:name])
+    @instruments = Instrument.all.reject{|i| @user.instruments.include?(i)}
+
+    if @user.instruments.include?(@inst)
+      render user_path(@user)
+    else
+      @user.instruments << @inst
+      render user_path(@user)
+    end
   end
 
 
