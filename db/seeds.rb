@@ -54,3 +54,15 @@ instrument10 = Instrument.create(name: "Trombone")
 # JAM SESSIONS
 jamsession1 = JamSession.create(title: "Wine & Whines", datetime: Date.parse("2017-8-28"), description: "so much wine", city_id: 1, genre_id: 2, host_id: 1)
 jamsession2 = JamSession.create(title: "Booze & Blues", datetime: Date.parse("2017-10-28"), description: "self pity with a side of sanca", city_id: 1, genre_id: 1, host_id: 2)
+
+# INSTRUMENTJAMS
+instrumentjams1 = InstrumentJam.create(instrument_id: 1, jam_session_id: 1)
+instrumentjams2 = InstrumentJam.create(instrument_id: 2, jam_session_id: 1)
+instrumentjams3 = InstrumentJam.create(instrument_id: 3, jam_session_id: 1)
+instrumentjams4 = InstrumentJam.create(instrument_id: 5, jam_session_id: 1)
+instrumentjams5 = InstrumentJam.create(instrument_id: 4, jam_session_id: 1)
+instrumentjams6 = InstrumentJam.create(instrument_id: 1, jam_session_id: 2)
+instrumentjams7 = InstrumentJam.create(instrument_id: 6, jam_session_id: 2)
+instrumentjams8 = InstrumentJam.create(instrument_id: 8, jam_session_id: 2)
+instrumentjams9 = InstrumentJam.create(instrument_id: 9, jam_session_id: 2)
+instrumentjams10 = InstrumentJam.create(instrument_id: 2, jam_session_id: 2)

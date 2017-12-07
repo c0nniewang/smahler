@@ -32,7 +32,6 @@ class JamSessionsController < ApplicationController
     else
       render 'new'
     end
-    # CREATE INSTRUMENT JAMS
   end
 
   def edit
@@ -41,15 +40,22 @@ class JamSessionsController < ApplicationController
 
   def update
     @jamsession = JamSession.find(params[:id])
+    @user = User.find(session[:user_id])
 
-    if @jamsession.update(jamsession_params)
-      redirect_to jam_session_path(@jamsession)
+    if params[:name]
+      @instrument = Instrument.find_by(name: params[:name])
+      @jamsession.musicians << User.find(session[:user_id])
+      render 'show'
     else
-      render :edit
+      @jamsession.update(jamsession_params)
+
+      if @jamsession.valid?
+        redirect_to jam_session_path(@jamsession)
+      else
+        render :edit
+      end
     end
   end
-    
-
 
   private
 
