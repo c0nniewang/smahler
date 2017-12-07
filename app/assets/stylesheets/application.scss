@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
 @import "materialize";
 
 
@@ -23,6 +24,10 @@ body, html
 
 a:link {
   color: grey;
+}
+
+.parallax {
+	height: 1000 px;
 }
 
 .intro
