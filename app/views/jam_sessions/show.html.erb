@@ -1,12 +1,63 @@
 <div class="profile deep-orange lighten-2 z-depth-1">
-  <h1 class="grey-text text-lighten-5"><%= @jamsession.title%></h1>
+  <h1 class="grey-text text-lighten-5 center"><%= @jamsession.title%></h1>
 </div>
-<h4 class="teal-text">Date:</h4><%= @jamsession.date%>
-<h4 class="teal-text">City:</h4><%= @jamsession.city.name%>
-<h4 class="teal-text">Description:</h4><%= @jamsession.description%>
-<h4 class="teal-text">Genre:</h4><%= @jamsession.genre.name%>
-<h4 class="teal-text">Host:</h4><%= @jamsession.host.name%>
 
-<div class="profile deep-orange lighten-2 z-depth-1">
-  <h3 class="grey-text text-lighten-5">Join This Jam:</h3>
-</div>
+<% if @user.id == @jamsession.host.id %>
+  <div class="container">
+    <div class="divider"></div>
+      <div class="section">
+        <h5 class="grey-text">You are hosting this event.</h5>
+      </div>
+    </div>
+<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col s4" >
+      <h5 class="teal-text">Date:</h5><%= @jamsession.date%></div>
+    <div class="col s4">
+      <h5 class="teal-text">City:</h5><%= @jamsession.city.name%></div>
+    <div class="col s4">
+      <h5 class="teal-text">Host:</h5><%= @jamsession.host.name%></div>
+    </div>
+    <div class="divider"></div>
+    <div class="section">
+      <h5 class="teal-text">Description:</h5><%= @jamsession.description%>
+      <h5 class="teal-text">Musicians Playing at this event:</h5>
+        <% if @jamsession.musicians == [] %>
+          <p>There are currently no musicians signed up to play for this event.</p>
+        <% else %>
+          <ul>
+          <% @jamsession.musicians.each do |musician| %>
+            <li><%= musician.name %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      <h6 class="teal-text">Genre:</h4><%= @jamsession.genre.name%>
+      </h6>
+    </div>
+  </div>
+
+<% if @user.id == @jamsession.host.id %>
+<div class="container" >
+  <div class="divider"></div>
+    <div class="section">
+      <h5 class="right-align"><%= link_to "Edit Jam Session", jam_session_path + "/edit" %></h5>
+    </div>
+  </div>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

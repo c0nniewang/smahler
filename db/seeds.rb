@@ -4,7 +4,7 @@ Genre.destroy_all
 Instrument.destroy_all
 JamSession.destroy_all
 
-
+# USERS
 user1 = User.create(username: "KatPap", email: "kat@kat.com",name: "Kat", password: "learnlovecode", is_host: false, is_musician: false)
 user2 = User.create(username: "Concon", email: "hello@connie.com", name: "Connie", password: "wework", is_host: false, is_musician: false)
 user3 = User.create(username: "QueenEllie", email: "ellie@ellie.com", name: "Ellie", password: "icequeen", is_host: false, is_musician: false)
@@ -14,7 +14,8 @@ user6 = User.create(username: "ErickC", email: "erick@erick.com", name: "Erick",
 user7 = User.create(username: "GregZ", email: "Greg@greg.com", name: "Greg", password: "blahblah", is_host: false, is_musician: false)
 user8 = User.create(username: "FirstJosh", email: "josh@josh.com", name: "Josh", password: "bass", is_host: false, is_musician: false)
 
-#CITIES
+# CITIES
+
 city1 = City.create(name:"New York City")
 city2 = City.create(name:"Chicago")
 city3 = City.create(name:"San Francisco")
