@@ -38,7 +38,7 @@ class JamSessionsController < ApplicationController
     @jamsession = JamSession.find(params[:id])
   end
 
-  def update
+  def updatejam
     @jamsession = JamSession.find(params[:id])
     @user = User.find(session[:user_id])
 
@@ -55,6 +55,24 @@ class JamSessionsController < ApplicationController
         render :edit
       end
     end
+  end
+
+
+  def delete_jams
+    @user = User.find(session[:user_id])
+    @js = JamSession.find_by(title: params[:title])
+
+    @instruments = Instrument.all.reject{|i| @user.instruments.include?(i)}
+
+    MusicianJam.where(musician_id: @user.id, jam_session_id: @js.id).destroy_all
+    render user_path(@user)
+  end
+
+  def delete_inst
+    @user = User.find(session[:user_id])
+    @inst = Instrument.find_by(name: params[:name])
+    @instruments = Instrument.all.reject{|i| @user.instruments.include?(i)}
+    render user_path(@user)
   end
 
   private

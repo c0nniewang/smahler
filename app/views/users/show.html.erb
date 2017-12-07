@@ -20,6 +20,7 @@
                     <li><%= js.host.name %> </li>
                     <li><%= js.genre.name %> </li>
                   </ul>
+                    <%= link_to "Delete Jam", delete_jams_path(js.id) %>
                 <% end %>
               </ul>
             <% else %>
@@ -43,8 +44,9 @@
                   <li><%= js.city.name %> </li>
                   <li><%= js.genre.name %> </li>
                   <% js.musicians.each do |m| %>
-                  <li> <%= link_to 'm.name', user_path(m.id) %> </li>
+                  <li> <%= link_to m.name, user_path(m.id) %> </li>
                 <% end %>
+                  <%= link_to "Delete Jam", "/jam_sessions/#{js.title}/#{js.id}", method: 'patch' %>
               </ul>
               <% end %>
             </ul>
@@ -61,12 +63,21 @@
       <div class="section">
         <div class="container instruments">
           <ul class="collection with-header">
-            <li class="collection-header"><h4>Instruments You Play:</h4></li>
-            <% @user.instruments.each do |instrument| %>
-              <li class="collection-item"><%= instrument.name %></li>
-            <% end %>
-            <li class="collection-item">Add an Instrument</li>
-          </ul>
+            <% if @user.instruments != [] %>
+              <li class="collection-header"><h5>Instruments You Play:</h5></li>
+                <% @user.instruments.each do |i| %>
+                  <li class="collection-item"><%= i.name %></li><%= link_to "Delete", "/jam_sessions/#{i.name}/#{i.id}", method: 'patch' %>
+                <% end %>
+                <li class="center"><h6>Add more to your profile bellow:</h6></li>
+              <% end %>
+
+              <li class="collection-header"><h5>Add Instruments:</h5></li>
+              <% @instruments.each do |i| %>
+                <div class="section">
+                  <h6 disabled class="center"><%= i.name %> <span/> </span><%= link_to "Add", "/jam_sessions/#{i.name}", method: 'patch' %></h6>
+                </div>
+              <% end %>
+            </ul>
         </div>
       </div>
   </div>
