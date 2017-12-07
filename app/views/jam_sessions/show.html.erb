@@ -53,7 +53,7 @@
             </ul>
               <p>You are already signed up to play for this event!</p>
           <% else %>
-          `<% @jamsession.instruments.each do |i| %>
+          <% @jamsession.instruments.each do |i| %>
             <h6 disabled class="left-align"><%= i.name %> <span/> </span><%= link_to "Sign Up", "/jam_sessions/#{@jamsession.id}/#{i.name}", method: 'patch' %></h6>
             <% end %>
           <% end %>
