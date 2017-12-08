@@ -2,18 +2,35 @@
 <html>
   <head>
     <title>Smahler</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <nav>
-      <div class="nav-wrapper">
-        <a href="#" class="brand-logo left">Jams</a>
-        <ul id="nav-mobile" class="right">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Jam Sessions</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
           <li>
             <%= link_to 'Home', jam_sessions_path %>
+          </li>
+          <li>
+            <% if logged_in? %>
+              <%= link_to 'Profile', user_path(session[:user_id]) %>
+            <% else %>
+              <%= link_to 'Profile', homepage_path %>
+            <% end%>
+            <% flash.each do |key, value| %>
+              <em><%= value %></em>
+              <% end%>
           </li>
           <li>
             <% if logged_in? %>
@@ -26,20 +43,21 @@
               <em><%= value %></em>
             <% end %>
           </li>
-          <li>
-            <% if logged_in? %>
-              <%= link_to 'Profile', user_path(session[:user_id]) %>
-            <% else %>
-              <%= link_to 'Profile', homepage_path %>
-            <% end%>
-            <% flash.each do |key, value| %>
-              <em><%= value %></em>
-              <% end%>
-          </li>
         </ul>
       </div>
     </nav>
-
+    <div class="container">
     <%= yield %>
+    </div>
+    <footer class="page-footer center-on-small-only">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col">
+            <h5 class="title">Jam Sessions</h5>
+            <p>text here</p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

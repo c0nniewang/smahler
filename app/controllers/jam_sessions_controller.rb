@@ -38,7 +38,7 @@ class JamSessionsController < ApplicationController
     @jamsession = JamSession.find(params[:id])
   end
 
-  def updatejam
+  def update
     @jamsession = JamSession.find(params[:id])
 
     @jamsession.update(jamsession_params)
