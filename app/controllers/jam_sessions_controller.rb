@@ -12,6 +12,7 @@ class JamSessionsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
     @jamsession = JamSession.find(params[:id])
     @user = User.find(session[:user_id])
   end
@@ -45,6 +46,7 @@ class JamSessionsController < ApplicationController
 
     @jamsession.update(jamsession_params)
 
+
     if @jamsession.update(jamsession_params)
       instrument_ids = params[:instrument][:instrument_ids].each{|i| i.to_i}
       instruments = instrument_ids.map{|id| Instrument.find(id)}
@@ -52,9 +54,19 @@ class JamSessionsController < ApplicationController
       @jamsession.save
 
       redirect_to jam_session_path(@jamsession)
+
     else
       render :edit
     end
+  end
+
+  def add_comment
+    @user = User.find(session[:user_id])
+    @jamsession = JamSession.find(params[:id])
+    @comment = Comment.create(content: params[:comments], user_id: @user.id, jam_session_id: @jamsession.id)
+    @jamsession.comments << @comment
+
+    render 'show'
   end
 
   def updatejam
@@ -72,6 +84,7 @@ class JamSessionsController < ApplicationController
       end
     end
   end
+
 
 
   def delete_jams
@@ -92,4 +105,7 @@ class JamSessionsController < ApplicationController
     params.require(:jam_session).permit(:title, :datetime, :description, :city_id, :genre_id)
   end
 
+  def comments_params
+    params.require(:comments).permit(:content)
+  end
 end

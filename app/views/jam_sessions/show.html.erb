@@ -69,7 +69,50 @@
           </ul>
         <% end %>
     </div>
+<<<<<<< HEAD
   
+=======
+  </div>
+<!-- ADD COMMENT TO JAM -->
+
+<div class="container">
+  <div class="divider"></div>
+    <div class="section">
+      <h3 class="grey-text">Jam Comments:</h3>
+          <% if @jamsession.comments == [] %>
+            <p>Be the first to leave a comment!</p>
+            <% else %>
+            <ul>
+              <% @jamsession.comments.each do |comment| %>
+              <div class="container">
+                 <li><%= comment.content %></li>
+              </div>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+
+<div class="container">
+  <div class="section">
+    <div class="container">
+      <div class="col s12">
+        <%= form_tag("/jam_sessions/#{@jamsession.id}/add_comment", method: 'patch') do %>
+          <div class="row">
+            <div class="input-field col s6">
+              <h6 class="grey-text"><b>Add A Comment:</b></h6>
+              <%= text_area_tag 'comments' %><br>
+              <a class="waves-effect waves-light btn"><%= submit_tag 'Create Comment'%></a>
+              <% end %>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+>>>>>>> the_last
 
 <!-- EDIT JAM IF HOST -->
 
