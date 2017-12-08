@@ -92,20 +92,18 @@
         <%= submit_tag 'Create Comment'%>
         <% end %>
         </div>
-      </div>
 
 
 
 
 <!-- EDIT JAM IF HOST -->
-
     <% if @user.id == @jamsession.host.id %>
       <div class="row">
-        <h5 class="text-right"><%= link_to "Edit Jam Session", jam_session_path + "/edit" %></h5>
-        </div>
+        <h5 class="text-center"><%= link_to "Edit Jam Session", jam_session_path + "/edit" %></h5>
       </div>
     <% end %>
   </div>
+</div>
 </div>
 
 
