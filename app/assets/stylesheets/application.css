@@ -68,7 +68,7 @@ body {
     color: #f36e46 !important;
 }
 
-.container 
+.container
 {
 	margin-top: 20px;
 	margin-bottom: 20px;
@@ -90,6 +90,16 @@ body {
 	margin-bottom: 50px;
   padding: 10px;
   margin-bottom: 400px;
+}
+
+.container-intro-3
+{
+	text-align: left;
+	margin-top: 30px;
+	margin-bottom: 5px;
+  padding: 10px;
+  margin-bottom: 5px;
+	letter-spacing: 5px;
 }
 
 .container-signup
@@ -132,4 +142,12 @@ body {
 	margin-left: 20px;
 	margin-right: 20px;
 
+}
+
+.divider-2
+{
+	margin-top: 100px;
+	margin-bottom: 50px;
+  padding: 10px;
+  margin-bottom: 200px;
 }

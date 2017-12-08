@@ -1,48 +1,52 @@
-<div class="container">
-  <div class"section"/>
-    <h1 class="grey-text text-lighten-5 center">Jam Sessions</h1>
+
+<div class="container-intro-3">
+  <div class="row-intro">
+    <h1 class="row-intro">Jam Sessions</h1>
+    </div>
   </div>
-</div>
 
 
 <!-- SEARCH BARS FOR CITY & GENRE -->
-<div class="divider"></div>
-<div class="section">
-  <div class="row">
-    <div class= "container">
-      <div class= "col s4">
-        <%= form_tag(jam_sessions_path, method: "get") do %>
-          <%= text_field_tag(:search_city, params[:search_city], placeholder: "Search by City:") %>
-              <a class="waves-effect waves-light btn"><%= submit_tag("search", name: nil) %></a>
-          <% end %>
-        </div>
-        <div class= "col s4">
+<div class="container">
+  <h3 class="grey-text">Search Jam Sessions by Category:</h3>
+  </div>
+  <div class= "container">
+      <div class="form-inline">
+        <div class="form-group">
           <%= form_tag(jam_sessions_path, method: "get") do %>
-            <%= text_field_tag(:search_genre, params[:search_genre], placeholder: "Search by Genre:") %>
-              <a class="waves-effect waves-light btn"><%= submit_tag("search", name: nil) %></a>
+            <%= text_field_tag(:search_city, params[:search_city], placeholder: "Search by City:") %>
+                <a class="waves-effect waves-light btn"><%= submit_tag("search", name: nil) %></a>
+            <% end %>
+          </div>
+          <div class="form-group">
+            <%= form_tag(jam_sessions_path, method: "get") do %>
+              <%= text_field_tag(:search_genre, params[:search_genre], placeholder: "Search by Genre:") %>
+                <a class="waves-effect waves-light btn"><%= submit_tag("search", name: nil) %></a>
+            <% end %>
+          </div>
+          <div class="form-group">
+            <%= form_tag(jam_sessions_path, method: "get") do %>
+              <%= text_field_tag(:search_instrument, params[:search_instrument], placeholder: "Search by Instrument:") %>
+                <a class="waves-effect waves-light btn"><%= submit_tag("search", name: nil) %></a>
           <% end %>
         </div>
-        <div class= "col s4">
-          <%= form_tag(jam_sessions_path, method: "get") do %>
-            <%= text_field_tag(:search_instrument, params[:search_instrument], placeholder: "Search by Instrument:") %>
-              <a class="waves-effect waves-light btn"><%= submit_tag("search", name: nil) %></a>
-          <% end %>
-        </div>
-      </div>
     </div>
   </div>
-</div>
 
 <!-- JAM SESH HEADER -->
 <div class="divider"></div>
 <div class="section">
   <div class="container">
-    <h2 class="grey-text">All Jam Sessions</h2>
-      <h5 class="teal-text">Click link to join Jam!</h5>
+    <h2 class="grey-text">Scroll through all Jam Sessions below!</h2>
     </div>
   </div>
 
+<div class="divider-2"></div>
 <!-- JAM SESH CARDS -->
+<div class="container">
+  <h3 class="teal-text">Click link to join Jam</h3>
+</div>
+
 <div class="row" >
   <div class="container">
     <ul>
@@ -50,7 +54,7 @@
       <div class="row">
         <div class="col s12 m5">
           <div class="card-panel white">
-              <h4 class="white-text"><%=link_to js.title, jam_session_path(js)%></h4><br />
+              <h4 class="white-text"><%=link_to js.title, jam_session_path(js)%></h4>
               <h5 class="bold-text">Jam Description: </h5>
               <p> <%= js.description %> </p>
             </div>
