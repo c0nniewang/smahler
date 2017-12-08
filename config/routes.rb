@@ -11,10 +11,11 @@ Rails.application.routes.draw do
   patch '/users/:name/:id', to: 'users#delete_inst'
   patch '/users/:name', to: 'users#update_inst'
 
+  patch '/jam_sessions/:id/add_comment', to: 'jam_sessions#add_comment'
   patch '/jam_sessions/:id/:name', to: 'jam_sessions#updatejam'
-  patch '/jam_sessions', to: 'jam_sessions#update'
   patch '/jam_sessions/:id', to: 'jam_sessions#delete_jams'
 
+  resources :comments, only: [:create]
 end
 
 

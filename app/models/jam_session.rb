@@ -6,6 +6,7 @@ class JamSession < ApplicationRecord
   has_many :musicians, through: :musician_jams
   has_many :instrument_jams
   has_many :instruments, through: :instrument_jams
+  has_many :comments
 
   validates :title, :datetime, :city, :genre, :description, presence: true
 
