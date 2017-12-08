@@ -5,7 +5,7 @@
 </div>
 
   <!-- USERS JAM SESSIONS TO PLAY -->
-<div class="container-fluid bg-1 text-left"> 
+<div class="container-transbox bg-1 text-left"> 
   <h3>Upcoming Jam Sessions You're Playing In:</h3>
     <% if @user.is_playing_jam_session != [] %>
       <ul>
@@ -16,24 +16,31 @@
                 <div class="card">
                   <div class="card-block">
                     <h3 class="card-title"><%=link_to js.title, jam_session_path(js) %></h3>
-                    <p class ="card-text">
+                    <div class ="card-body">
                     <li>Date: <%= js.date %> </li>
                     <li>Description: <%= js.description %> </li>
                     <li>City: <%= js.city.name %> </li>
                     <li>Host Name: <%= js.host.name %> </li>
-                    <li>Genre: <%= js.genre.name %> </li></p>
+                    <li>Genre: <%= js.genre.name %> </li>
+                    <%= link_to "Delete Jam", "/jam_sessions/#{js.id}", method: 'patch' %></div>
                   </div>
                 </div>
               </div>
             </div>
           </ul>
-            <%= link_to "Delete Jam", "/jam_sessions/#{js.id}", method: 'patch' %>
         <% end %>
       </ul>
     <% else %>
-      <%= "You are not playing in any upcoming jams." %><br />
+      <div class="container">
+        <div class="row">
+          <%= "You are not playing in any upcoming jams." %><br />
+        </div></div>
     <% end %>
-  <%= link_to 'Join Jam Session!', jam_sessions_path %>
+  <div class="container">
+    <div class="row">
+      <%= link_to 'Join Jam Session!', jam_sessions_path %>
+    </div>
+  </div>
 
 <!-- USERS JAM SESSIONS TO HOST -->
   <h3>Upcoming Jam Sessions You're Hosting:</h3>
@@ -42,8 +49,8 @@
       <% @user.is_hosting_jam_session.each do |js| %>
         <ul>
           <div class="row">
-            <div class="col-sm-6">
-              <div class="card">
+            <div class="col-sm-6 card-border">
+              <div class="card card-padding">
                 <div class="card-block">
                   <h3 class="card-title"><%= link_to js.title, jam_session_path(js) %></h3>
                   <p class="card-text">
@@ -63,10 +70,18 @@
       <% end %>
     </ul>
     <% else %>
-    <%= "You are not hosting any upcoming jams." %><br />
+      <div class="container">
+        <div class="row">
+          <%= "You are not hosting any upcoming jams." %><br />
+        </div>
+      </div>
     <% end %>
-  <%= link_to 'Create a Jam Session!', new_jam_session_path %>
-</div>
+    <div class="container">
+      <div class="row">
+        <%= link_to 'Create a Jam Session!', new_jam_session_path %>
+      </div>
+    </div>
+  </div>
 </div>
 </div>
 

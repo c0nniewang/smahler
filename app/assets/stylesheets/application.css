@@ -32,14 +32,26 @@ body {
 
 .bg-1 {
 	background-color: #ffffff;
-	opacity: 0.6;
+	opacity: 0.8;
 	margin-top: 60px;
+  margin-bottom: 60px;
+}
 
+.card-border {
+  border: 1px solid lightgray;
+  margin-bottom: 10px;
+  box-shadow: 2px 3px lightgray;
+}
+
+.card-padding {
+  margin: 10px;
 }
 
 .bg-1 h3 {
+  margin-top: 40px;
 	color: #000000;
 	font-weight: bold;
+  margin-bottom: 40px;
 }
 
 .navbar {
@@ -82,9 +94,12 @@ body {
 
 .container-signup
 {
-	margin-top: 50px;
 	padding: 10px;
+}
 
+.container-transbox
+{
+  padding: 50px;
 }
 
 .row-intro{
