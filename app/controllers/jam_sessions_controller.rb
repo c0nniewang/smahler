@@ -4,6 +4,8 @@ class JamSessionsController < ApplicationController
       @jamsessions = JamSession.search_city(params[:search_city])
     elsif params[:search_genre]
       @jamsessions = JamSession.search_genre(params[:search_genre])
+    elsif params[:search_instrument]
+      @jamsessions = JamSession.search_instrument(params[:search_instrument])
     else
       @jamsessions = JamSession.all
     end
@@ -38,7 +40,7 @@ class JamSessionsController < ApplicationController
     @jamsession = JamSession.find(params[:id])
   end
 
-  def updatejam
+  def update
     @jamsession = JamSession.find(params[:id])
 
     @jamsession.update(jamsession_params)
@@ -61,8 +63,13 @@ class JamSessionsController < ApplicationController
 
     if params[:name]
       @instrument = Instrument.find_by(name: params[:name])
-      @jamsession.musicians << User.find(session[:user_id])
-      render 'show'
+      if @user.instruments.include?(@instrument)
+        @jamsession.musicians << User.find(session[:user_id])
+        render 'show'
+      else
+        flash[:message] = "#{@user.name} you are not registered to play this instrument!"
+        render 'show'
+      end
     end
   end
 

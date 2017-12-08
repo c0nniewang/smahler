@@ -18,4 +18,14 @@ class User < ApplicationRecord
     arr.map {|el| el.jam_session }
   end
 
+  def self.total_musicians
+    jams = JamSession.all
+    musicians = jams.map{|j| j.musicians}.flatten!
+    musicians.count
+  end
+
+  def non_user_instruments
+    Instrument.all.reject{|i| self.instruments.include?(i)}
+  end
+
 end

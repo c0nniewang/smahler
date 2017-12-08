@@ -7,22 +7,28 @@
 <div class="section">
   <div class="row">
     <div class= "container">
-      <div class= "col s6">
+      <div class= "col s4">
         <%= form_tag(jam_sessions_path, method: "get") do %>
           <%= text_field_tag(:search_city, params[:search_city], placeholder: "Search by City:") %>
               <a class="waves-effect waves-light btn"><%= submit_tag("search", name: nil) %></a>
           <% end %>
         </div>
-        <div class= "col s6">
+        <div class= "col s4">
           <%= form_tag(jam_sessions_path, method: "get") do %>
             <%= text_field_tag(:search_genre, params[:search_genre], placeholder: "Search by Genre:") %>
+              <a class="waves-effect waves-light btn"><%= submit_tag("search", name: nil) %></a>
+          <% end %>
+        </div>
+        <div class= "col s4">
+          <%= form_tag(jam_sessions_path, method: "get") do %>
+            <%= text_field_tag(:search_instrument, params[:search_instrument], placeholder: "Search by Instrument:") %>
               <a class="waves-effect waves-light btn"><%= submit_tag("search", name: nil) %></a>
           <% end %>
         </div>
       </div>
     </div>
   </div>
-</div> 
+</div>
 
 <!-- JAM SESH HEADER -->
 <div class="divider"></div>

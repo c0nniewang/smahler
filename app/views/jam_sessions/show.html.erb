@@ -1,3 +1,9 @@
+<% if flash %>
+  <% flash.each do |key, value| %>
+    <%= value %>
+  <% end %>
+<% end %>
+
 <div class="profile deep-orange lighten-2 z-depth-1">
   <h1 class="grey-text text-lighten-5 center"><%= @jamsession.title%></h1>
 </div>
@@ -46,12 +52,12 @@
           <p>There are no listed instruments for this event.</p>
         <% else %>
           <% if MusicianJam.where(musician_id: session[:user_id], jam_session_id: @jamsession.id) != [] %>
-          <ul>
-              <% @jamsession.instruments.each do |i| %>
-              <li><%= i.name %></li>
-              <% end %>
-            </ul>
-              <p>You are already signed up to play for this event!</p>
+            <p>You are already signed up to play for this event!</p>
+            <ul>
+                <% @jamsession.instruments.each do |i| %>
+                <li><%= i.name %></li>
+                <% end %>
+              </ul>
           <% else %>
           `<% @jamsession.instruments.each do |i| %>
             <h6 disabled class="left-align"><%= i.name %> <span/> </span><%= link_to "Sign Up", "/jam_sessions/#{@jamsession.id}/#{i.name}", method: 'patch' %></h6>

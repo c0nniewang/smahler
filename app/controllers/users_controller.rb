@@ -12,21 +12,22 @@ class UsersController < ApplicationController
    end
   end
 
+
   def show
     @user = User.find(session[:user_id])
-    inst = Instrument.all + @user.instruments
-    @instruments = inst.uniq
+    @instruments = @user.non_user_instruments
   end
 
   def update_inst
     @user = User.find(session[:user_id])
     @inst = Instrument.find_by(name: params[:name])
-    @instruments = Instrument.all.reject{|i| @user.instruments.include?(i)}
 
     if @user.instruments.include?(@inst)
-      render user_path(@user)
+      @instruments = @user.non_user_instruments
+      render 'show'
     else
       @user.instruments << @inst
+      @instruments = @user.non_user_instruments
       render 'show'
     end
   end
@@ -34,10 +35,12 @@ class UsersController < ApplicationController
   def delete_inst
     @user = User.find(session[:user_id])
     @inst = Instrument.find_by(name: params[:name])
-    @user.instruments.where(id: @inst.id).destroy_all
-    @instruments = Instrument.all.reject{|i| @user.instruments.include?(i)}
+    MusicianInstrument.where(musician_id: @user.id, instrument_id: @inst.id).destroy_all
+    @instruments = @user.non_user_instruments
     render 'show'
   end
+
+
 
 
 private
