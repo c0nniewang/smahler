@@ -7,36 +7,36 @@
 
 <div class="container-transbox bg-1">
 <!-- Host NOTIFS -->
-<div class="row">
-  <h3><%=@jamsession.title%></h3>
-</div>
-<% if @user.id == @jamsession.host.id %>
-  <div class="container">
-    <div class="row">
-      <h3>You are hosting this event.</h3>
-    </div>
+  <div class="row">
+    <h3><%=@jamsession.title%></h3>
   </div>
-<% end %>
+  <% if @user.id == @jamsession.host.id %>
+    <div class="container">
+      <div class="row">
+        <h3>You are hosting this event.</h3>
+      </div>
+    </div>
+  <% end %>
 
 <!-- JAM SESH DESCRIPTION -->
 
-<div class="container">
-  <div class="row">
-    <div class="col-sm-4" >
-      <h4>Date:</h4><%= @jamsession.date%></div>
-    <div class="col-sm-4">
-      <h4>City:</h4><%= @jamsession.city.name%></div>
-    <div class="col-sm-4">
-      <h4>Host:</h4><%= @jamsession.host.name%></div>
-    </div>
-    <div class="row" style="height: 25px"></div>
+  <div class="container">
     <div class="row">
-      <div class="col-sm-8">
-      <h4>Description:</h4><%= @jamsession.description%></div>
+      <div class="col-sm-4" >
+        <h4>Date:</h4><%= @jamsession.date%></div>
       <div class="col-sm-4">
-      <h4>Genre:</h4><%= @jamsession.genre.name%></div>
-    </div>
-    <div class="row" style="height: 25px"></div>
+        <h4>City:</h4><%= @jamsession.city.name%></div>
+      <div class="col-sm-4">
+        <h4>Host:</h4><%= @jamsession.host.name%></div>
+      </div>
+      <div class="row" style="height: 25px"></div>
+      <div class="row">
+        <div class="col-sm-8">
+        <h4>Description:</h4><%= @jamsession.description%></div>
+        <div class="col-sm-4">
+        <h4>Genre:</h4><%= @jamsession.genre.name%></div>
+      </div>
+      <div class="row" style="height: 25px"></div>
 
 <!--added list of instruments, sign up button, and disabled links if instruments have been signed up for -->
       <h4>Instrumentation:</h4>
@@ -58,7 +58,7 @@
         <% end %>
 <!--end of instrument list -->
       <div class="row" style="height: 25px"></div>
-      <h5 class="teal-text">Musicians Playing at this event:</h5>
+      <h4 class="teal-text">Musicians Playing at this event:</h4>
         <% if @jamsession.musicians == [] %>
           <p>There are currently no musicians signed up to play for this event.</p>
         <% else %>
@@ -68,51 +68,34 @@
             <% end %>
           </ul>
         <% end %>
-    </div>
-<<<<<<< HEAD
-  
-=======
-  </div>
+
 <!-- ADD COMMENT TO JAM -->
-
-<div class="container">
-  <div class="divider"></div>
-    <div class="section">
-      <h3 class="grey-text">Jam Comments:</h3>
-          <% if @jamsession.comments == [] %>
-            <p>Be the first to leave a comment!</p>
-            <% else %>
-            <ul>
-              <% @jamsession.comments.each do |comment| %>
-              <div class="container">
-                 <li><%= comment.content %></li>
-              </div>
-            <% end %>
-          </ul>
+  <div class="row" style="height: 25px"></div>
+  <div class="col-sm-12">
+    <h4>Jam Comments:</h4>
+      <% if @jamsession.comments == [] %>
+        <p>Be the first to leave a comment!</p>
+        <% else %>
+        <ul>
+        <% @jamsession.comments.each do |comment| %>
+          <li><%= comment.content %></li>
         <% end %>
-      </div>
+        </ul>
+      <% end %>
     </div>
 
-<div class="container">
-  <div class="section">
-    <div class="container">
-      <div class="col s12">
-        <%= form_tag("/jam_sessions/#{@jamsession.id}/add_comment", method: 'patch') do %>
-          <div class="row">
-            <div class="input-field col s6">
-              <h6 class="grey-text"><b>Add A Comment:</b></h6>
-              <%= text_area_tag 'comments' %><br>
-              <a class="waves-effect waves-light btn"><%= submit_tag 'Create Comment'%></a>
-              <% end %>
-            </div>
-          </div>
+  <div class="col-sm-12">
+    <%= form_tag("/jam_sessions/#{@jamsession.id}/add_comment", method: 'patch') do %>
+      <div class="input-field col s6">
+        <h6 class="grey-text"><b>Add A Comment:</b></h6>
+        <%= text_area_tag 'comments' %><br>
+        <%= submit_tag 'Create Comment'%>
+        <% end %>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
 
 
->>>>>>> the_last
+
 
 <!-- EDIT JAM IF HOST -->
 
@@ -124,3 +107,5 @@
     <% end %>
   </div>
 </div>
+
+
